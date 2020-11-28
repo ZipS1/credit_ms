@@ -117,7 +117,6 @@ def reduce_debt():
 
 
 def print_cmds():
-    print("clear     очищает экран")
     print("dec       уменьшить долг")
     print("del       удаление имени")
     print("exit      выход из лаунчера")
@@ -129,18 +128,18 @@ def print_cmds():
     print("showall   выводит на экран всю информацию базы данных")
 
 
-if __name__ == '__main__': #TODO: make a clearwin() usage more smarter
+#TODO: make commands look like
+# dec Igor Ivanov 1000
+if __name__ == '__main__':
     clearwin()
     setup()
     print("Инициализация успешна.")
-    print("Добро пожаловать в базу данных! (v. 1.0)\n")
+    print("Добро пожаловать в базу данных! (v. 1.1)\n")
     print('Для вывода списка команд введите "help"\n')
     run = True
     while run:
         cmd = input(": ").strip()
-        if cmd == "clear":
-            clearwin()
-        elif cmd == "dec":
+        if cmd == "dec":
             clearwin()
             reduce_debt()
             print()
@@ -152,6 +151,7 @@ if __name__ == '__main__': #TODO: make a clearwin() usage more smarter
             run = False
             os.system("cls")
         elif cmd == "help":
+            clearwin()
             print()
             print_cmds()
             print()
@@ -160,6 +160,7 @@ if __name__ == '__main__': #TODO: make a clearwin() usage more smarter
             add_debt()
             print()
         elif cmd == "names":
+            clearwin()
             print()
             debtors()
             print()
@@ -172,6 +173,7 @@ if __name__ == '__main__': #TODO: make a clearwin() usage more smarter
             set_debt()
             print()
         elif cmd == "showall":
+            clearwin()
             print()
             db_print()
             print()
