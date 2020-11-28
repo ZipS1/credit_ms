@@ -11,7 +11,6 @@ def setup():
         name TEXT,
         debt INT
     )""")
-
     db.commit()
 
 
