@@ -116,6 +116,7 @@ def reduce_debt():
             db.commit()
             print("Имя удалено за неимением долга!")
 
+
 def print_cmds():
     print("clear     очищает экран")
     print("dec       уменьшить долг")
