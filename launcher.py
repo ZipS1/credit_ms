@@ -129,7 +129,7 @@ def print_cmds():
     print("showall   выводит на экран всю информацию базы данных")
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': #TODO: make a clearwin() usage more smarter
     clearwin()
     setup()
     print("Инициализация успешна.")
