@@ -1,1 +1,1 @@
-# debtors_db
+# project with sqlite3
