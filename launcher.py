@@ -3,7 +3,7 @@ import os
 
 db = sqlite3.connect("debtors.db")
 cursor = db.cursor()
-WIDTH = 50
+WIDTH = 75
 
 
 def setup():
@@ -31,9 +31,10 @@ def get_name_and_value():
         return name, value
 
     try:
-       value = int(value)
+        value = int(value)
     except:
         return 0, 0
+
 
 def clearwin():
     os.system("cls")
@@ -132,7 +133,7 @@ def print_cmds():
     print("inc <name> <value>\tувеличить долг")
     print("names\t\t\tвыводит на экран только имена")
     print("new <name> <value>\tдобавление нового имени <name> "
-                                                            "с долгом <value>")
+          "с долгом <value>")
     print("set <name> <value>\tустановить имени <name> значение долга <value>")
     print("showall\t\t\tвыводит на экран всю информацию")
 
