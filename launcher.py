@@ -131,7 +131,7 @@ def print_cmds():
     print("exit\t\t\tвыход из лаунчера")
     print("help\t\t\tвыводит на экран все команды лаунчера")
     print("inc <name> <value>\tувеличить долг")
-    print("names\t\t\tвыводит на экран только имена")
+    print("names\t\t\tвыводит на экран список имен")
     print("new <name> <value>\tдобавление нового имени <name> "
           "с долгом <value>")
     print("set <name> <value>\tустановить имени <name> значение долга <value>")
