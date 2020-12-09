@@ -28,10 +28,10 @@ def get_name_and_value():
     else:
         name = " ".join(cmd[1:-1])
         value = cmd[-1]
-        return name, value
 
     try:
         value = int(value)
+        return name, value
     except:
         return 0, 0
 
