@@ -6,6 +6,10 @@ cursor = db.cursor()
 WIDTH = 75
 
 
+class Command(): # TODO: make a class decribing commands
+    pass         #       move here command functions
+
+
 def setup():
     cursor.execute("""CREATE TABLE IF NOT EXISTS debtors(
         name TEXT,
