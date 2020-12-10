@@ -6,8 +6,35 @@ cursor = db.cursor()
 WIDTH = 75
 
 
-class Command(): # TODO: make a class decribing commands
-    pass         #       move here command functions
+class Command():
+
+    def __init__(self, string):
+        self.string = string.split()
+        self.action = self.string[0]
+        self.len = len(string)
+
+    def get_action(self):
+        return self.action
+
+    def get_name_and_value(self):
+        if self.len == 1:
+            return 0, 0
+        else:
+            name = " ".join(self.string[1:-1])
+            value = self.string[-1]
+
+        try:
+            value = int(value)
+            return name, value
+        except:
+            return 0, 0
+
+    def get_name(self):
+        if self.len == 1:
+            return 0
+        else:
+            name = " ".join(self.string[1:])
+            return name
 
 
 def setup():
@@ -16,28 +43,6 @@ def setup():
         debt INT
     )""")
     db.commit()
-
-
-def get_name():
-    if len(cmd) == 1:
-        return 0
-    else:
-        name = " ".join(cmd[1:])
-        return name
-
-
-def get_name_and_value():
-    if len(cmd) == 1:
-        return 0, 0
-    else:
-        name = " ".join(cmd[1:-1])
-        value = cmd[-1]
-
-    try:
-        value = int(value)
-        return name, value
-    except:
-        return 0, 0
 
 
 def clearwin():
@@ -146,68 +151,68 @@ if __name__ == '__main__':
     clearwin()
     setup()
     print("Инициализация успешна.")
-    print("Добро пожаловать в базу данных! (v. 2.1)\n")
+    print("Добро пожаловать в базу данных! (v. 2.11)\n")
     print('Для вывода списка команд введите "help"\n')
     run = True
     while run:
-        cmd = input(": ").strip().split()
+        cmd = Command(input(": ").strip())
 
-        if cmd[0] == "dec":
-            name, value = get_name_and_value()
+        if cmd.get_action() == "dec":
+            name, value = cmd.get_name_and_value()
             if (name, value) == (0, 0):
                 print("Ошибка в синтаксисе команды!\n")
                 continue
 
             reduce_debt(name, value)
             print()
-        elif cmd[0] == "del":
-            name = get_name()
+        elif cmd.get_action() == "del":
+            name = cmd.get_name()
             if name == 0:
                 print("Ошибка в синтаксисе команды!\n")
                 continue
 
             delete_debtor(name)
             print()
-        elif cmd[0] == "exit":
+        elif cmd.get_action() == "exit":
             run = False
             os.system("cls")
-        elif cmd[0] == "help":
+        elif cmd.get_action() == "help":
             print()
             print_cmds()
             print()
-        elif cmd[0] == "inc":
-            name, value = get_name_and_value()
+        elif cmd.get_action() == "inc":
+            name, value = cmd.get_name_and_value()
             if (name, value) == (0, 0):
                 print("Ошибка в синтаксисе команды!\n")
                 continue
 
             add_debt(name, value)
             print()
-        elif cmd[0] == "names":
+        elif cmd.get_action() == "names":
             print()
             debtors()
             print()
-        elif cmd[0] == "new":
-            name, value = get_name_and_value()
+        elif cmd.get_action() == "new":
+            name, value = cmd.get_name_and_value()
             if (name, value) == (0, 0):
                 print("Ошибка в синтаксисе команды!\n")
                 continue
 
             add_debtor(name, value)
             print()
-        elif cmd[0] == "set":
-            name, value = get_name_and_value()
+        elif cmd.get_action() == "set":
+            name, value = cmd.get_name_and_value()
             if (name, value) == (0, 0):
                 print("Ошибка в синтаксисе команды!\n")
                 continue
 
             set_debt(name, value)
             print()
-        elif cmd[0] == "showall":
+        elif cmd.get_action() == "showall":
             print()
             db_print()
             print()
-        elif cmd[0] == "clear":
+        elif cmd.get_action() == "clear":
             clearwin()
         else:
             print("Неизвестная команда!\n")
