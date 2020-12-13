@@ -1,5 +1,6 @@
 import sqlite3
 import os
+from sys import platform
 
 db = sqlite3.connect("debtors.db")
 cursor = db.cursor()
@@ -46,7 +47,16 @@ def setup():
 
 
 def clearwin():
-    os.system("cls")
+    if platform == "win32":
+        os.system("cls")
+    elif platform == "linux":
+        os.system("clear")
+    else:
+        print("Ошибка: неизвестная ОС")
+
+
+def clear_app_win():
+    clearwin()
     print(" LAUNCHER ".center(WIDTH, "-"))
 
 
@@ -148,10 +158,10 @@ def print_cmds():
 
 
 if __name__ == '__main__':
-    clearwin()
+    clear_app_win()
     setup()
     print("Инициализация успешна.")
-    print("Добро пожаловать в базу данных! (v. 2.11)\n")
+    print("Добро пожаловать в базу данных! (v. 2.2)\n")
     print('Для вывода списка команд введите "help"\n')
     run = True
     while run:
@@ -175,7 +185,7 @@ if __name__ == '__main__':
             print()
         elif cmd.get_action() == "exit":
             run = False
-            os.system("cls")
+            clearwin()
         elif cmd.get_action() == "help":
             print()
             print_cmds()
@@ -213,6 +223,6 @@ if __name__ == '__main__':
             db_print()
             print()
         elif cmd.get_action() == "clear":
-            clearwin()
+            clear_app_win()
         else:
             print("Неизвестная команда!\n")
