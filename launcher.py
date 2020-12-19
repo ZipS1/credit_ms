@@ -145,16 +145,16 @@ def reduce_debt(debtor_name, value):
 
 def print_cmds():
     print("clear\t\t\tочищает экран")
-    print("dec <name> <value>\tуменьшить долг")
-    print("del <name>\t\tудаление имени")
-    print("exit\t\t\tвыход из лаунчера")
-    print("help\t\t\tвыводит на экран все команды лаунчера")
-    print("inc <name> <value>\tувеличить долг")
+    print("dec <name> <value>\tуменьшает долг")
+    print("del <name>\t\tудаляет имя")
+    print("exit\t\t\tвыходит из лаунчера")
+    print("help\t\t\tвыводит на экран список команд")
+    print("inc <name> <value>\tувеличивает долг")
     print("names\t\t\tвыводит на экран список имен")
-    print("new <name> <value>\tдобавление нового имени <name> "
-          "с долгом <value>")
-    print("set <name> <value>\tустановить имени <name> значение долга <value>")
-    print("showall\t\t\tвыводит на экран всю информацию")
+    print("new <name> <value>\tдобавляет имя <name> с долгом <value>")
+    print("set <name> <value>\tустананвливает имени <name>"
+            " значение долга <value>")
+    print("showall\t\t\tвыводит на экран список имен с долгом")
 
 
 if __name__ == '__main__':
