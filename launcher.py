@@ -210,7 +210,12 @@ if __name__ == '__main__':
     print('Для вывода списка команд введите "help"\n')
     run = True
     while run:
-        cmd = Command(input(": ").strip())
+        string = input(": ").strip()
+        if not string:
+            continue
+        else:
+            cmd = Command(string)
+
 
         if cmd.get_action() == "dec":
             name, value = cmd.get_name_and_value()
