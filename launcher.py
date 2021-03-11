@@ -216,7 +216,6 @@ if __name__ == '__main__':
         else:
             cmd = Command(string)
 
-
         if cmd.get_action() == "dec":
             name, value = cmd.get_name_and_value()
             if (name, value) == (0, 0):
