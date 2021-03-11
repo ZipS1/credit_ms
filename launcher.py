@@ -204,14 +204,7 @@ def print_cmds():
     print("exit\t\t\tвыходит из лаунчера")
 
 
-if __name__ == '__main__':
-    pwd_handler = Pwd_handler(DB_NAME)
-    pwd_handler.inputpwd()
-    clear_app_win()
-    setup()
-    print("Инициализация успешна.")
-    print(f"Добро пожаловать в базу данных! (v. {VERSION})\n")
-    print('Для вывода списка команд введите "help"\n')
+def main_loop():
     run = True
     while run:
         string = input(": ").strip()
@@ -298,3 +291,15 @@ if __name__ == '__main__':
 
         else:
             print("Неизвестная команда!\n")
+
+
+if __name__ == '__main__':
+    pwd_handler = Pwd_handler(DB_NAME)
+    pwd_handler.inputpwd()
+    clear_app_win()
+    setup()
+    print("Инициализация успешна.")
+    print(f"Добро пожаловать в базу данных! (v. {VERSION})\n")
+    print('Для вывода списка команд введите "help"\n')
+
+    main_loop()
