@@ -1,11 +1,13 @@
 import sqlite3
 import os
 from sys import platform
+from db_pwd import Pwd_handler
 
-db = sqlite3.connect("debtors.db")
-cursor = db.cursor()
+DB_NAME = "debtors.db"
 WIDTH = 75
 VERSION = "2.3"
+db = sqlite3.connect(DB_NAME)
+cursor = db.cursor()
 
 
 class Command():
@@ -203,6 +205,8 @@ def print_cmds():
 
 
 if __name__ == '__main__':
+    pwd_handler = Pwd_handler(DB_NAME)
+    pwd_handler.inputpwd()
     clear_app_win()
     setup()
     print("Инициализация успешна.")
