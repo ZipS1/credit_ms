@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3                     # TODO: localization
 import os
 from sys import platform
 from db_pwd import Pwd_handler
