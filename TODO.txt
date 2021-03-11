@@ -1,1 +1,0 @@
-make set_pwd commmand!

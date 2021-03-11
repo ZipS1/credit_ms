@@ -191,6 +191,7 @@ def reduce_debt(debtor_name, value):
 
 def print_cmds():
     print("clear\t\t\tочищает экран")
+    print("changepwd\t\tменяет пароль доступа к БД")
     print("dec <name> <value>\tуменьшает долг")
     print("inc <name> <value>\tувеличивает долг")
     print("set <name> <value>\tустанавливает имени <name>"
@@ -284,6 +285,10 @@ def main_loop():
         elif cmd.get_action() == "showall":
             print()
             db_print()
+            print()
+
+        elif cmd.get_action() == "changepwd":
+            pwd_handler.set_new()
             print()
 
         elif cmd.get_action() == "clear":
