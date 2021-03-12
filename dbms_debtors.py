@@ -4,7 +4,7 @@ from sys import platform
 from db_pwd import Pwd_handler
 
 DB_NAME = "debtors.db"
-WIDTH = 75
+WIDTH = 80
 VERSION = "2.3"
 db = sqlite3.connect(DB_NAME)
 cursor = db.cursor()
@@ -92,7 +92,7 @@ def clearwin():
 
 def clear_app_win():
     clearwin()
-    print(" LAUNCHER ".center(WIDTH, "-"))
+    print(" MANAGEMENT SYSTEM ".center(WIDTH, "-"))
 
 
 def add_debtor(debtor_name, debtor_debt):
