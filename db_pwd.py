@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3                # TODO: make delay before showing messages
 from hashlib import sha256
 from getpass import getpass
 
@@ -6,7 +6,8 @@ DB_FILE_NAME = "access.db"
 
 
 class Pwd_handler:
-    def __init__(self, db_file_name):
+    def __init__(self, db_file_name, enter_attempts_allowed=3):
+        self.enter_attempts_allowed = enter_attempts_allowed
         self.db = sqlite3.connect(db_file_name)
         self.cursor = self.db.cursor()
         self.cursor.execute("""CREATE TABLE IF NOT EXISTS pwdhash (
@@ -39,8 +40,18 @@ class Pwd_handler:
     def inputpwd(self):
         pwd = getpass("Enter your code-word: ")
         correct = self._check(pwd)
+        attempts = 1
         while not correct:
-            pwd = getpass("Wrong! Enter again: ")
+
+            if attempts == self.enter_attempts_allowed:
+                print("You have too much attempts :(\nExiting...")
+                exit()
+            attempts += 1
+
+            if attempts != self.enter_attempts_allowed:
+                pwd = getpass("Wrong! Enter again: ")
+            else:
+                pwd = getpass("Last try! Enter again: ")
             correct = self._check(pwd)
 
     def _check(self, word):
