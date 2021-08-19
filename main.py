@@ -1,11 +1,12 @@
-import sqlite3                     # TODO: localization
+import sqlite3                     # TODO: REFACTOR
 import os
 from sys import platform
 from db_pwd import Pwd_handler
 
-DB_NAME = "debtors.db"
+DB_NAME = "credits.db"
 WIDTH = 80
 VERSION = "2.3"
+
 db = sqlite3.connect(DB_NAME)
 cursor = db.cursor()
 
